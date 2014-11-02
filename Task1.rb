@@ -1,7 +1,7 @@
 class Task1
 	def initialize
-@array = Array.new(4) { Array.new(4) }
-@array.each { |mas| mas.map! { |numbers| numbers = rand(-10..10) } }
+    @array = Array.new(4) { Array.new(4) }
+    @array.each { |mas| mas.map! { |numbers| numbers = rand(-10..10) } }
   end
   def calculate
     sum = 0
