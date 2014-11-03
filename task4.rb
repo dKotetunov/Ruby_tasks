@@ -9,14 +9,14 @@ end
 
 attr_reader :hash
 
-  def symbolize_keys(hash1)
-    hash1.inject({}){|result, (key, value)|
+  def symbolize_keys
+    @hash.inject({}){|result, (key, value)|
       new_key = case key
                   when String then key.to_sym
                   else key
                 end
       new_value = case value
-                    when Hash then symbolize_keys(value)
+                    when Hash then symbolize_keys()
                     else value
                   end
       result[new_key] = new_value
@@ -25,7 +25,7 @@ attr_reader :hash
   end
 puts "Symbolized hash:"
 change_keys = Task4.new
-change_keys.symbolize_keys(change_keys.hash)
+change_keys.symbolize_keys
 
 
 
