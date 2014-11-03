@@ -7,26 +7,23 @@ def initialize
         'yesterday1'=> 34, 'yesteryear' => 2014}
 end
 
-attr_reader :hash
 
-  def symbolize_keys
+  def keys_values
     @hash.inject({}){|result, (key, value)|
       new_key = case key
                   when String then key.to_sym
                   else key
                 end
       new_value = case value
-                    when Hash then symbolize_keys()
+                    when Hash then keys_values
                     else value
                   end
       result[new_key] = new_value
       result
     }
   end
+end
 puts "Symbolized hash:"
 change_keys = Task4.new
-change_keys.symbolize_keys
+puts change_keys.keys_values
 
-
-
-end
